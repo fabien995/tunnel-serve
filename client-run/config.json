@@ -1,0 +1,4 @@
+{
+    "ReverseTunnelAddr": "127.0.0.1:5030",
+    "LocalServiceAddr": "127.0.0.1:1337"
+}
