@@ -49,9 +49,38 @@ go build -o client-proxy-run client-proxy-run.go
 
 6. In the output, the address of your proxy server on a public IP will be given.
 
-7. Congrats, you can access your proxy server from anywhere in the world!.
+7. Congrats, you can access your proxy server from anywhere in the world!
 
-### Make any service available over the internet
+### Make any service available over the internet.
+Example service:
+```shell
+ssh -D 7070 -N localhost 
+``` 
+(local SOCKS proxy server).
+(you need to have a SSH server running on your system for this).
+
+1. Configure the client:
+client-run/config.json:
+```json
+{
+    "ReverseTunnelAddr": "157.230.120.90:5030",
+    "LocalServiceAddr": "127.0.0.1:7070"
+}
+```
+_ReverseTunnelAddr_: Address of the public gateway.
+_LocalServiceAddr_: Address of the service which should be made available via the server.
+
+2. Run the client:
+```shell
+cd client-run
+./client-run
+```
+
+Please note that if you do not have authentication, anyone will be able to access your service
+since it will be made available on the internet.
+
+
+### Run server and client locally
 1. Configure the server:
 server-run/config.json:
 ```json
@@ -80,7 +109,7 @@ cd server-run
 client-run/config.json:
 ```json
 {
-    "ReverseTunnelAddr": "157.230.120.90:5030",
+    "ReverseTunnelAddr": "127.0.0.1:5030",
     "LocalServiceAddr": "127.0.0.1:7070"
 }
 ```
@@ -94,10 +123,7 @@ cd client-run
 ./client-run
 ```
 
-Example app which you could serve:
-ssh -D 7070 -N localhost  
-(local SOCKS proxy server).
-(you need to have a SSH server running on your system for this).
+
 
 ## Directory Structure
 - client  
