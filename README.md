@@ -143,10 +143,10 @@ Code to run the client.
 - server-run  
 Code to run the server.
 
-- client-proxy
+- client-proxy  
 Client with integrated HTTP(S) proxy.
 
-- client-proxy-run
+- client-proxy-run  
 Code to run the client with integrated HTTP(S) proxy.
 
 
