@@ -11,6 +11,7 @@ import (
 type ServerConfig struct {
 	BindAddress string
 	ControlPort string
+	DomainName string
 }
 
 func main() {
@@ -28,5 +29,6 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	server.Run(bindAddress, controlPort)
+	domainName := config.DomainName
+	server.Run(bindAddress, controlPort, domainName)
 }

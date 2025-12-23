@@ -8,6 +8,7 @@ import (
 	"errors"
 	"log"
 	"time"
+	"strings"
 )
 
 
@@ -63,7 +64,7 @@ func acceptErrorHandle(err error, lastErrorTime time.Time, consecutiveErrors int
 		gateway server.
 	- controlPort: port to bind to for control server.
 */
-func muxServer(bindAddress string, controlPort int) {
+func muxServer(bindAddress string, controlPort int, domainName string) {
 	var tag string = "[server-mux-server] -"
 
 	listenAddress := fmt.Sprintf("%s:%d", bindAddress, controlPort)
@@ -86,7 +87,7 @@ func muxServer(bindAddress string, controlPort int) {
 			continue
 		}
 		
-		go forwardServer(bindAddress, conn)
+		go forwardServer(bindAddress, conn, domainName)
 	}
 	
 }
@@ -97,7 +98,7 @@ func muxServer(bindAddress string, controlPort int) {
 	- bindAddress: address to bind to
 	- conn: tunnel connection
 */
-func forwardServer(bindAddress string, conn net.Conn) {
+func forwardServer(bindAddress string, conn net.Conn, domainName string) {
 	var tag string = "[server-forwardServer] -"
 
 	var stopChan chan int = make(chan int)
@@ -120,7 +121,8 @@ func forwardServer(bindAddress string, conn net.Conn) {
 
 	// Send control info 
 	// (address of gateway).
-	controlMsg := "," + listener.Addr().String()
+	listenerAddr := listener.Addr().String()
+	controlMsg := "," + domainName + ":" + listenerAddr[strings.LastIndex(listenerAddr, ":") + 1:]
 	controlMsg = padControlMessage(controlMsg)
 	log.Printf("%s control msg: %s\n", tag, controlMsg)
 	
@@ -128,6 +130,18 @@ func forwardServer(bindAddress string, conn net.Conn) {
 	if err != nil {
 		panic(err)
 	}
+
+	// First of all, receive the shared
+	// secret so we know this is a proper
+	// client.
+	secretBuf := make([]byte, 36)
+	controlConn.Read(secretBuf)
+	secretStr := string(secretBuf)
+	if secretStr != "d12a1f29-065d-4d65-addf-fefa51ff019b" {
+		log.Printf("%s Invalid secret. Fake client. Exiting this forwardServer().\n", tag)
+		return
+	}
+	log.Printf("%s Authenticaed. Legitimate client.\n", tag)
 
 	controlConn.Write([]byte(controlMsg))
 	controlConn.Close()
@@ -187,8 +201,8 @@ func copyConnection(muxConn *yamux.Session, srcConn net.Conn, stopChan chan int)
 	<-done
 } 
 
-func Run(bindAddress string, controlPort int) {
-	muxServer(bindAddress, controlPort)
+func Run(bindAddress string, controlPort int, domainName string) {
+	muxServer(bindAddress, controlPort, domainName)
 }
 
 /*

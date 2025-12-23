@@ -1,2 +1,12 @@
+github.com/elazarl/goproxy v1.7.2 h1:Y2o6urb7Eule09PjlhQRGNsqRfPmYI3KKQLFpCAV3+o=
+github.com/elazarl/goproxy v1.7.2/go.mod h1:82vkLNir0ALaW14Rc399OTTjyNREgmdL2cVoIbS6XaE=
+github.com/elazarl/goproxy/ext v0.0.0-20251122212328-fad3713f1715 h1:qL0DOadaXRA3dDQn2Cd+UtAAa8TTQUCPe9XN4Qyo1Gg=
+github.com/elazarl/goproxy/ext v0.0.0-20251122212328-fad3713f1715/go.mod h1:fx75f98CST5mRiLRu5fYLHj5hx641zC7dcN+cT88gmo=
 github.com/hashicorp/yamux v0.1.2 h1:XtB8kyFOyHXYVFnwT5C3+Bdo8gArse7j2AQ0DA0Uey8=
 github.com/hashicorp/yamux v0.1.2/go.mod h1:C+zze2n6e/7wshOZep2A70/aQU6QBRWJO/G6FT1wIns=
+github.com/tjarratt/babble v0.0.0-20210505082055-cbca2a4833c1 h1:j8whCiEmvLCXI3scVn+YnklCU8mwJ9ZJ4/DGAKqQbRE=
+github.com/tjarratt/babble v0.0.0-20210505082055-cbca2a4833c1/go.mod h1:O5hBrCGqzfb+8WyY8ico2AyQau7XQwAfEQeEQ5/5V9E=
+golang.org/x/net v0.36.0 h1:vWF2fRbw4qslQsQzgFqZff+BItCvGFQqKzKIzx1rmoA=
+golang.org/x/net v0.36.0/go.mod h1:bFmbeoIPfrw4sMHNhb4J9f6+tPziuGjq7Jk/38fxi1I=
+golang.org/x/text v0.22.0 h1:bofq7m3/HAFvbF51jz3Q9wLg3jkvSPuiZu/pD1XwgtM=
+golang.org/x/text v0.22.0/go.mod h1:YRoo4H8PVmsu+E3Ou7cqLVH8oXWIHVoX0jqUWALQhfY=

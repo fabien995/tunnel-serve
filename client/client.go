@@ -37,12 +37,19 @@ func client(outboundTunnelTarget string, routeTarget string) {
 	log.Printf("%s client target of tunnel: %s.\n", tag, outboundTunnelTarget)
 
 	
-	// Get control info
-	// (address of gateway).
 	controlInfoConn, err := session.Accept()
 	if err != nil {
 		panic(err)
 	}
+	// Send secret so that server knows
+	// this is a valid client.
+	secret := "d12a1f29-065d-4d65-addf-fefa51ff019b"
+	sendSecret := []byte(secret)
+	controlInfoConn.Write(sendSecret)
+	log.Printf("%s Sent auth secret.\n", tag)
+
+	// Get control info
+	// (address of gateway).
 	addrRecv := make([]byte, 80)
 	controlInfoConn.Read(addrRecv)
 	addrRecvStr := string(addrRecv)
