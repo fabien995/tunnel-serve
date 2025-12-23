@@ -41,11 +41,16 @@ proxy is running.
 
 4. Build the client.
 ```shell
+cd client-proxy-run
 go get .
-go build -o client-proxy-run client-proxy-run.go
+go build -o client-run client-run.go
 ```
 
 5. Run the client.
+```shell
+cd client-proxy-run
+./client-run
+```
 
 6. In the output, the address of your proxy server on a public IP will be given.
 
