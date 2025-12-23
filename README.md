@@ -36,19 +36,19 @@ _"LocalServiceAddr"_: this is the address that your client will tunnel to.
 It needs to stay at _localhost_ port _7070_ since _7070_ is where your
 proxy is running.
 
-(3. Install go)
+3. Install go
 
-3. Build the client.
+4. Build the client.
 ```shell
 go get .
 go build -o client-proxy-run client-proxy-run.go
 ```
 
-4. Run the client.
+5. Run the client.
 
-5. In the output, the address of your proxy server on a public IP will be given.
+6. In the output, the address of your proxy server on a public IP will be given.
 
-6. Congrats, you can access your proxy server from anywhere in the world!.
+7. Congrats, you can access your proxy server from anywhere in the world!.
 
 
 ## Directory Structure
