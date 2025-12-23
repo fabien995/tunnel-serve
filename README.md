@@ -1,5 +1,5 @@
 # tunnel-serve
-[![language](https://img.shields.io/badge/language-golang?logo=go)]
+[![language](https://img.shields.io/badge/language-golang-blue?logo=go)](https://go.dev/)
 
 Tunnel any local service to a server on the internet.
 You do not need to do any configuration of routers, etc. to have your service available over the internet since an outbound connection is used on the client.
