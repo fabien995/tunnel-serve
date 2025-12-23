@@ -13,6 +13,7 @@ Tunnel any local service to a server on the internet.
 You do not need to do any configuration of routers, etc. to have your service available over the internet since an outbound connection is used on the client.
 
 ## Examples
+### Proxy your local connection
 Say you want to run a proxy server on your local network and make it instantly available over the internet.
 1. Go into client-proxy-run
 
@@ -50,51 +51,7 @@ go build -o client-proxy-run client-proxy-run.go
 
 7. Congrats, you can access your proxy server from anywhere in the world!.
 
-
-## Directory Structure
-- client  
-Client which serves your local service to the gateway.
-
-- server  
-Server which tunnels incoming connections to your local service.
-
-- client-run  
-Code to run the client.
-
-- server-run  
-Code to run the server.
-
-Example app which you could serve:
-ssh -D 1337 -N localhost  
-(local SOCKS proxy server).  
-
-Adjust the config.json in client-run and server-run as needed.
-
-## How to Build
-
-1. Install go (https://go.dev/)
-2. Build server:
-```shell
-cd server-run
-go get .
-go build -o server-run server-run.go
-```
-
-3. Build client:
-```shell
-cd client-run
-go get .
-go build -o client-run client-run.go
-```
-
-4. Build client with proxy:
-```shell
-cd client-proxy-run
-go get .
-go build -o client-run client-run.go
-```
-
-## Run Example
+### Make any service available over the internet
 1. Configure the server:
 server-run/config.json:
 ```json
@@ -135,4 +92,47 @@ _LocalServiceAddr_: Address of the service which should be made available via th
 ```shell
 cd client-run
 ./client-run
+```
+
+Example app which you could serve:
+ssh -D 7070 -N localhost  
+(local SOCKS proxy server).
+(you need to have a SSH server running on your system for this).
+
+## Directory Structure
+- client  
+Client which serves your local service to the gateway.
+
+- server  
+Server which tunnels incoming connections to your local service.
+
+- client-run  
+Code to run the client.
+
+- server-run  
+Code to run the server.
+
+
+## How to Build
+
+1. Install go (https://go.dev/)
+2. Build server:
+```shell
+cd server-run
+go get .
+go build -o server-run server-run.go
+```
+
+3. Build client:
+```shell
+cd client-run
+go get .
+go build -o client-run client-run.go
+```
+
+4. Build client with proxy:
+```shell
+cd client-proxy-run
+go get .
+go build -o client-run client-run.go
 ```
