@@ -10,8 +10,9 @@
 
 ## About
 Tunnel any local service to a server on the internet.
-You do not need to do any configuration of routers, etc. to have your service available over the internet since an outbound connection is used on the client.
-__Note: If your organization restricts proxy/VPN use, this software will not work.__
+You do not need to do any configuration of routers, etc. to have your service available over the internet since an outbound connection is used on the client.  
+__Note: If your organization restricts proxy/VPN use, the client-proxy-run software will not work.__  
+__Specifically, if there are blocks for HTTP(S) proxy connections in your network.__
 
 ## Examples
 ### Proxy your local connection
