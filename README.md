@@ -4,15 +4,22 @@
 
 ## Table of Contents
 - [About](#-about)
+- [Prerequisites] (#-prerequisites)
 - [Examples](#-examples)
 - [Directory Structure](#directory-structure)
 - [How to Build](#how-to-build)
 
 ## About
 Tunnel any local service to a server on the internet.
-You do not need to do any configuration of routers, etc. to have your service available over the internet since an outbound connection is used on the client.  
+You do not need to do any configuration of routers, etc. to have your service available over the internet if you use our default, already available server.  
+If you want to run your own server, you will have to do some configuration of firewalls and routers depending on your setup.
 __Note: If your organization restricts proxy/VPN use, the client-proxy-run software will not work.__  
 __Specifically, if there are blocks for HTTP(S) proxy connections in your network.__
+
+## Prerequisites
+### Install Go
+Follow the specific instructions for your OS on the [Golang page](https://go.dev/doc/install).
+
 
 ## Examples
 ### Proxy your local connection
