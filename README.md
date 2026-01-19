@@ -4,7 +4,7 @@
 
 ## Table of Contents
 - [About](#-about)
-- [Prerequisites] (#-prerequisites)
+- [Prerequisites](#-prerequisites)
 - [Examples](#-examples)
 - [Directory Structure](#directory-structure)
 - [How to Build](#how-to-build)
