@@ -13,7 +13,7 @@
 Tunnel any local service to a server on the internet.
 You do not need to do any configuration of routers, etc. to have your service available over the internet if you use our default, already available server.  
 If you want to run your own server, you will have to do some configuration of firewalls and routers depending on your setup.  
-__Note: If your organization restricts proxy/VPN connections, you won't be able to access the proxy provided in the output of client-proxy-run.__   
+__Note: If your network restricts proxy/VPN connections, you won't be able to access the proxy provided in the output of client-proxy-run.__   
 __Specifically, if there are blocks for HTTP(S) proxy connections in your network.__  
 
 ## Prerequisites
